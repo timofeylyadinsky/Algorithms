@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class InsertionSort {
-    ArrayList<Integer> insertionSort(ArrayList<Integer> arr){
-        for(int i = 1; i < arr.size(); i++){
+    public static int[] insertionSort(int[] arr){
+        for(int i = 1; i < arr.length; i++){
             int j = i - 1;
-            while(j>=0 && arr.get(j) > arr.get(j+1)){
-                Collections.swap(arr, i, j);
+            while(j>=0 && arr[j] > arr[j+1]){
+                int tmp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = tmp;
                 j--;
             }
         }

@@ -25,12 +25,21 @@ package by.bsu.sorts;
 */
 
 
+import by.bsu.sorts.handler.HybridQuickInsertion;
+import by.bsu.sorts.handler.InsertionSort;
 
+import java.util.Arrays;
 
 public class Main {
 
     public static void main(String[] args) {
 
+
+        int[] arr = new int[]{1,4,5,6,7,9,0,2,4,2,45,656,3,65,34,22};
+
+        //arr = new InsertionSort().insertionSort(arr);
+        arr = new HybridQuickInsertion().hybridQuickInsertionSort(arr, 1, 0, arr.length-1);
+        System.out.println(Arrays.toString(arr));
 
     }
 }
