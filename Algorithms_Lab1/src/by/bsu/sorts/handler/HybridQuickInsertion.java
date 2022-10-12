@@ -7,10 +7,14 @@ public class HybridQuickInsertion {
 
     public int[] hybridQuickInsertionSort(int[] arr, int k, int low, int high){
 
-        if(low < high){
-         int divideIndex = partition(arr,low,high);
-         hybridQuickInsertionSort(arr, k, low, (divideIndex-1));
-         hybridQuickInsertionSort(arr,k,divideIndex, high);
+        if(high - low <= k){
+            new InsertionSort().insertionSort(arr, low, high);
+        }else {
+            if (low < high) {
+                int divideIndex = partition(arr, low, high);
+                hybridQuickInsertionSort(arr, k, low, (divideIndex - 1));
+                hybridQuickInsertionSort(arr, k, divideIndex, high);
+            }
         }
         return arr;
     }
