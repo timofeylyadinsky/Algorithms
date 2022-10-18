@@ -92,7 +92,7 @@ public class Menu {
                 int[] arr1 = arr[i].clone();
                 //long start = System.currentTimeMillis();
                 Instant start = Instant.now();
-                arr1 =  new HybridMergeInsertion().mergeSort(arr1);
+                arr1 =  new HybridMergeInsertion().hybridMergeInsertionSort(arr1, k);
                 Instant finish = Instant.now();
                 //long end = System.currentTimeMillis();
                 System.out.println(Arrays.toString(arr1) + "\n When k = " + k + "\nTimes = " + Duration.between(start, finish).toMillis() +"ms\n\n");
