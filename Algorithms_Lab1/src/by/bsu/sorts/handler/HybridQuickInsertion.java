@@ -1,11 +1,10 @@
 package by.bsu.sorts.handler;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 public class HybridQuickInsertion {
 
-    public int[] hybridQuickInsertionSort(int[] arr, int k, int low, int high){
+    public int[] hybridQuickInsertionSort(int[] arr, int low, int high, int k){
 
         if(high - low <= k){
             new InsertionSort().insertionSort(arr, low, high);

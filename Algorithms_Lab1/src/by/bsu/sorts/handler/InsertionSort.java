@@ -1,7 +1,6 @@
 package by.bsu.sorts.handler;
 
-import java.util.ArrayList;
-import java.util.Collections;
+
 
 public class InsertionSort {
     public static void /*int[]*/ insertionSort(int[] arr, int from, int to){

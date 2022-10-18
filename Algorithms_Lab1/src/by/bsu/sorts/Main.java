@@ -27,6 +27,7 @@ package by.bsu.sorts;
 
 import by.bsu.sorts.handler.HybridQuickInsertion;
 import by.bsu.sorts.handler.InsertionSort;
+import by.bsu.sorts.reader.InfoReader;
 
 import java.util.Arrays;
 
@@ -35,11 +36,25 @@ public class Main {
     public static void main(String[] args) {
 
 
-        int[] arr = new int[]{1,4,5,6,7,9,0,2,4,2,45,656,3,65,34,22};
+        int R = 0, N = 0, M = 0;
+        System.out.println("R - number of array");
+        R = new InfoReader().oneIntRead(System.in);
+
+        System.out.println("N - size of array");
+        N = new InfoReader().oneIntRead(System.in);
+
+        System.out.println("M - number of Random");
+        M = new InfoReader().oneIntRead(System.in);
+
+        int[][] arr = new int[R][N];
+
+        new InfoReader().inputRandomToArray(arr, M);
+
 
         //arr = new InsertionSort().insertionSort(arr);
-        arr = new HybridQuickInsertion().hybridQuickInsertionSort(arr, 3, 0, arr.length-1);
-        System.out.println(Arrays.toString(arr));
-
+        //arr = new HybridQuickInsertion().hybridQuickInsertionSort(arr,  0, arr.length-1, 3);
+        for(int i = 0; i < arr.length; i++){
+            System.out.println(Arrays.toString(arr[i]));
+        }
     }
 }
