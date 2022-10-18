@@ -4,15 +4,15 @@ package by.bsu.sorts.handler;
 
 public class HybridQuickInsertion {
 
-    public int[] hybridQuickInsertionSort(int[] arr, int low, int high, int k){
+    public static int[] hybridQuickInsertionSort(int[] arr, int low, int high, int k){
 
         if(high - low <= k){
             new InsertionSort().insertionSort(arr, low, high);
         }else {
             if (low < high) {
                 int divideIndex = partition(arr, low, high);
-                hybridQuickInsertionSort(arr, k, low, (divideIndex - 1));
-                hybridQuickInsertionSort(arr, k, divideIndex, high);
+                hybridQuickInsertionSort(arr, low, (divideIndex - 1),k);
+                hybridQuickInsertionSort(arr, divideIndex, high,k);
             }
         }
         return arr;
