@@ -41,5 +41,6 @@ public class Main {
 
         Menu menu = new Menu();
         menu.firstTaskMenu();
+        menu.secondTaskMenu();
     }
 }
