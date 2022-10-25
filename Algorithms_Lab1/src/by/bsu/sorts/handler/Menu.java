@@ -40,7 +40,7 @@ public class Menu {
                 arr1 =  new HybridQuickInsertion().hybridQuickInsertionSort(arr1,  0, arr1.length-1, k);
                 Instant finish = Instant.now();
                 //long end = System.currentTimeMillis();
-                System.out.println(Arrays.toString(arr1) + "\n When k = " + k + "\nTimes = " + Duration.between(start, finish).toMillis() +"ms\n\n");
+                //System.out.println(Arrays.toString(arr1) + "\n When k = " + k + "\nTimes = " + Duration.between(start, finish).toMillis() +"ms\n\n");
             }
 
 
@@ -100,7 +100,7 @@ public class Menu {
 
 
         }
-
-
     }
+
+
 }

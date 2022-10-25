@@ -2,6 +2,10 @@ package by.bsu.sorts.handler;
 
 
 
+
+//Worst O(n^2)
+//Average(n^2)
+//Best O(n)
 public class InsertionSort {
     public static void /*int[]*/ insertionSort(int[] arr, int from, int to){
         for(int i = (from+1); i <= to; i++){

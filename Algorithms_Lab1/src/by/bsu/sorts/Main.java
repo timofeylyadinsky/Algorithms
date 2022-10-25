@@ -25,9 +25,7 @@ package by.bsu.sorts;
 */
 
 
-import by.bsu.sorts.handler.HybridQuickInsertion;
-import by.bsu.sorts.handler.InsertionSort;
-import by.bsu.sorts.handler.Menu;
+import by.bsu.sorts.handler.*;
 import by.bsu.sorts.reader.InfoReader;
 
 import java.util.Arrays;
@@ -39,8 +37,45 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Menu menu = new Menu();
+        //Menu menu = new Menu();
         //menu.firstTaskMenu();
-        menu.secondTaskMenu();
+       // menu.secondTaskMenu();
+        TestMenu.testTimeTask11();
+
+        //int[][] arr = new int[1][10000];
+
+        //long tmp = 500;
+        //new InfoReader().inputRandomToArray(arr, 10000);
+        //System.out.println(Arrays.toString(arr[0]));
+
     }
+    /*private static void testTime(){
+
+        int R = 0, N = 0, M = 0;
+        System.out.println("R - number of array");
+        R = new InfoReader().oneIntRead(System.in);
+
+        System.out.println("N - size of array");
+        N = new InfoReader().oneIntRead(System.in);
+
+        System.out.println("M - number of Random");
+        M = new InfoReader().oneIntRead(System.in);
+
+        int[][] arr = new int[R][N];
+
+        new InfoReader().inputRandomToArray(arr, M);
+
+        System.out.println("Arrays.toString(arr[i])");
+        for(int i = 0; i < arr.length; i++){
+            System.out.println(Arrays.toString(arr[i]));
+        }
+        measureTime(() -> new HybridMergeInsertion().hybridMergeInsertionSort(arr[0], 5));
+    }
+
+    private static void measureTime(Runnable task) {
+        long startTime = System.currentTimeMillis();
+        task.run();
+        long elapsed = System.currentTimeMillis() - startTime;
+        System.out.println("Затраченное время: " + elapsed + " ms");
+    }*/
 }
