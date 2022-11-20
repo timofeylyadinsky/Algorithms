@@ -24,8 +24,7 @@ public class Menu {
         int[] kRez = new int[R];
 
 
-        //arr = new InsertionSort().insertionSort(arr);
-        //arr = new HybridQuickInsertion().hybridQuickInsertionSort(arr,  0, arr.length-1, 3);
+
         System.out.println("Arrays.toString(arr[i])");
         for(int i = 0; i < arr.length; i++){
             System.out.println(Arrays.toString(arr[i]));
@@ -39,30 +38,10 @@ public class Menu {
                 Instant start = Instant.now();
                 arr1 =  new HybridQuickInsertion().hybridQuickInsertionSort(arr1,  0, arr1.length-1, k);
                 Instant finish = Instant.now();
-                //long end = System.currentTimeMillis();
-                //System.out.println(Arrays.toString(arr1) + "\n When k = " + k + "\nTimes = " + Duration.between(start, finish).toMillis() +"ms\n\n");
             }
 
 
         }
-
-        /*for(int i = 0; i < arr.length; i++){
-            //int[] arr1 = arr[i];
-                int[] arr1 = arr[i].clone();
-                long start = System.currentTimeMillis();
-                //arr[i] =  new HybridQuickInsertion().hybridQuickInsertionSort(arr[i],  0, arr[i].length-1, 1);
-                System.out.println(Arrays.toString(new HybridQuickInsertion().hybridQuickInsertionSort(arr[i],  0, arr[i].length-1, 1)));
-                long end = System.currentTimeMillis();
-                System.out.println("\n" + Arrays.toString(arr[i]) + "\n" + (end-start) +"ms\n\n");
-        }*/
-
-
-        /*int[] arr1 = new int[]{2, 1, 4, 3, 4};
-        System.out.println(Arrays.toString(new HybridQuickInsertion().hybridQuickInsertionSort(arr1,  0, arr1.length-1, 1)));
-*/
-
-        //System.out.println(Arrays.toString(b));
-        //System.out.println(Arrays.toString(kRez));
     }
 
 
