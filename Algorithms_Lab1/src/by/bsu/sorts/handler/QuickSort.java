@@ -61,33 +61,24 @@ public class QuickSort {
 
 
     //Sort using middle key of array
-    public static int[] quickSortMiddleKey(int[] arr, int low, int high){
-        if (low < high) {
-            int divideIndex = partitionMiddleKey(arr, (arr.length/2));
-            quickSortMiddleKey(arr, low, (divideIndex - 1));
-            quickSortMiddleKey(arr, divideIndex, high);
+    public static int[] quickSortMiddleKey(int[] arr){
+        if (arr.length <= 1) {
+            return arr;
         }
-        return arr;
-    }
-    private static int partitionMiddleKey(int[] arr, int midKey){
-        int rightIndex = midKey;
-        int leftIndex = midKey;
-
-        int pivot = arr[midKey + (midKey - midKey) / 2];
-        while (leftIndex <= rightIndex) {
-            while (arr[leftIndex] < pivot) {
-                leftIndex++;
-            }
-            while (arr[rightIndex] > pivot) {
-                rightIndex--;
-            }
-            if (leftIndex <= rightIndex) {
-                swap(arr, rightIndex, leftIndex);
-                leftIndex++;
-                rightIndex--;
-            }
-        }
-        return leftIndex;
+        int partition = arr[arr.length/2];
+        int[] lessArray = Arrays.stream(arr)
+                .filter(i -> i < partition)
+                .toArray();
+        int[] equalArray = Arrays.stream(arr)
+                .filter(i -> i == partition)
+                .toArray();
+        int[] greaterArray = Arrays.stream(arr)
+                .filter(i -> i > partition)
+                .toArray();
+        int[][] arrayForConcat = new int[][]{quickSortMiddleKey(lessArray),equalArray,quickSortMiddleKey(greaterArray)};
+        return Arrays.stream(arrayForConcat)
+                .flatMapToInt(i->Arrays.stream(i))
+                .toArray();
     }
 
 

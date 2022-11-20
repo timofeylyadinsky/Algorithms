@@ -42,9 +42,11 @@ public class Main {
 
         a = QuickSort.createRandomArrayByGauss(a, size, seed);
         System.out.println(Arrays.toString(a));
-        a = QuickSort.quickSortSecondKey(a);
-        System.out.println(Arrays.toString(a));
-
+        int[] resultsForSortArrayA = QuickSort.quickSortSecondKey(a);
+        System.out.println(Arrays.toString(resultsForSortArrayA));
+        resultsForSortArrayA = null;
+        resultsForSortArrayA = QuickSort.quickSortMiddleKey(a);
+        System.out.println(Arrays.toString(resultsForSortArrayA));
 
 
     }
