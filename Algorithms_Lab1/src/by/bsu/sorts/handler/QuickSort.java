@@ -82,7 +82,26 @@ public class QuickSort {
     }
 
 
-
+//quick sort with random key
+    public static int[] quickSortRandomKey(int[] arr){
+        if (arr.length <= 1) {
+            return arr;
+        }
+        int partition = arr[(int)Math.random()*(arr.length-1)];
+        int[] lessArray = Arrays.stream(arr)
+                .filter(i -> i < partition)
+                .toArray();
+        int[] equalArray = Arrays.stream(arr)
+                .filter(i -> i == partition)
+                .toArray();
+        int[] greaterArray = Arrays.stream(arr)
+                .filter(i -> i > partition)
+                .toArray();
+        int[][] arrayForConcat = new int[][]{quickSortRandomKey(lessArray),equalArray,quickSortRandomKey(greaterArray)};
+        return Arrays.stream(arrayForConcat)
+                .flatMapToInt(i->Arrays.stream(i))
+                .toArray();
+    }
 
 
 

@@ -38,15 +38,18 @@ public class Main {
 
         int size = 21;
         int seed = 200;
-        int[] a = new int[20];
+        int[] a = new int[size];
 
-        a = QuickSort.createRandomArrayByGauss(a, size, seed);
+        a = QuickSort.createRandomArray(a, size, seed);
         System.out.println(Arrays.toString(a));
         int[] resultsForSortArrayA = QuickSort.quickSortSecondKey(a);
-        System.out.println(Arrays.toString(resultsForSortArrayA));
-        resultsForSortArrayA = null;
+        System.out.println("Sort with second key: " + Arrays.toString(resultsForSortArrayA));
+        resultsForSortArrayA = a;
         resultsForSortArrayA = QuickSort.quickSortMiddleKey(a);
-        System.out.println(Arrays.toString(resultsForSortArrayA));
+        System.out.println("Sort with Middle key: " + Arrays.toString(resultsForSortArrayA));
+        resultsForSortArrayA = a;
+        resultsForSortArrayA = QuickSort.quickSortRandomKey(a);
+        System.out.println("Sort with Random key: " + Arrays.toString(resultsForSortArrayA));
 
 
     }
