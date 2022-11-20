@@ -34,21 +34,55 @@ import java.util.Arrays;
 public class Main {
 
 
-
     public static void main(String[] args) {
+
+        int size = 21;
+        int seed = 200;
+        int[] a = new int[20];
+
+        a = QuickSort.createRandomArrayByGauss(a, size, seed);
+        System.out.println(Arrays.toString(a));
+        a = QuickSort.quickSortSecondKey(a);
+        System.out.println(Arrays.toString(a));
+
+//        int[] b = new int[]{1,2,3,4,5};
+//        int[][] common = new int[][]{a,b};
+//        int[] c = Arrays.stream(common)
+//                .flatMapToInt(i->Arrays.stream(i))
+//                .toArray();
+//
+//
+//        System.out.println(Arrays.toString(Arrays.stream(c)
+//                .filter(i -> i<c[1])
+//                .toArray()));
+//
+//
+//        System.out.println(c.length);
+//        System.out.println(Arrays.toString(QuickSort.quickSortSecondKey(c)));
+        //System.out.println(Arrays.toString(a));
+        //a = QuickSort.quickSort(a,0,a.length-1);
+        //System.out.println(Arrays.toString(a));
+
 
         //Menu menu = new Menu();
         //menu.firstTaskMenu();
-       // menu.secondTaskMenu();
-        TestMenu.testTimeTask11();
+        // menu.secondTaskMenu();
+
+        //TestMenu.testTimeTask11();
 
         //int[][] arr = new int[1][10000];
-
         //long tmp = 500;
         //new InfoReader().inputRandomToArray(arr, 10000);
         //System.out.println(Arrays.toString(arr[0]));
 
+
     }
+}
+
+
+
+
+
     /*private static void testTime(){
 
         int R = 0, N = 0, M = 0;
@@ -78,4 +112,3 @@ public class Main {
         long elapsed = System.currentTimeMillis() - startTime;
         System.out.println("Затраченное время: " + elapsed + " ms");
     }*/
-}
