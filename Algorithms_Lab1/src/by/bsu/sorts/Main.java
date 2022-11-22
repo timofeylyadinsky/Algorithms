@@ -52,8 +52,13 @@ public class Main {
         System.out.println("Sort with Random key: " + Arrays.toString(resultsForSortArrayA));
         resultsForSortArrayA = a;
         resultsForSortArrayA = QuickSort.quickSortMedianOfThreeKey(a);
-        System.out.println("Sort with Random key: " + Arrays.toString(resultsForSortArrayA));
-
+        System.out.println("Sort with median three key: " + Arrays.toString(resultsForSortArrayA));
+        resultsForSortArrayA = a;
+        resultsForSortArrayA = QuickSort.quickSortHoar(a,0,a.length-1);
+        System.out.println("Sort with Hoar Partition: " + Arrays.toString(resultsForSortArrayA));
+        resultsForSortArrayA = a;
+        resultsForSortArrayA = QuickSort.quickSortLomuto(a,0,a.length-1);
+        System.out.println("Sort with Lomuto Partition: " + Arrays.toString(resultsForSortArrayA));
 
     }
 }

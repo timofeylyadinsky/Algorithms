@@ -139,26 +139,29 @@ public static int findMedianOfThree(int a, int b, int c){
 
 
 
-    public static int[] quickSort(int[] arr, int low, int high){
+    public static int[] quickSortHoar(int[] arr, int low, int high){
         if (high - low > 1) {
-            int divideIndex = partitionQuickSort(arr, low, high);
-            quickSort(arr, low, (divideIndex - 1));
-            quickSort(arr, divideIndex, high);
+            int divideIndex = partitionHoar(arr, low, high);
+            quickSortHoar(arr, low, (divideIndex - 1));
+            quickSortHoar(arr, divideIndex, high);
         }
         return arr;
     }
-    private static int partitionQuickSort(int[] arr, int low, int high){
-        int rightIndex = high;
-        int leftIndex = low;
+    private static int partitionHoar(int[] arr, int from, int to){
+        int rightIndex = to;
+        int leftIndex = from;
 
-        int pivot = arr[1];
+        int pivot = arr[(from + (to)) / 2];
         while (leftIndex <= rightIndex) {
+
             while (arr[leftIndex] < pivot) {
                 leftIndex++;
             }
+
             while (arr[rightIndex] > pivot) {
                 rightIndex--;
             }
+
             if (leftIndex <= rightIndex) {
                 swap(arr, rightIndex, leftIndex);
                 leftIndex++;
@@ -167,6 +170,33 @@ public static int findMedianOfThree(int a, int b, int c){
         }
         return leftIndex;
     }
+
+
+
+
+    //Lomuto
+    public static int[] quickSortLomuto(int[] arr, int low, int high){
+        if (high - low > 1) {
+            int divideIndex = partitionLomuto(arr, low, high);
+            quickSortLomuto(arr, low, (divideIndex - 1));
+            quickSortLomuto(arr, divideIndex, high);
+        }
+        return arr;
+    }
+    private static int partitionLomuto(int[] arr, int low, int high){
+        int pivot = arr[high];
+        int i = low;
+        for (int j = low; j < high; j++){
+            if(arr[j]<=pivot){
+                swap(arr,i,j);
+                i++;
+            }
+        }
+        swap(arr,i,high);
+        return i;
+    }
+
+
 
     private static void swap(int[] array, int index1, int index2) {
         int tmp  = array[index1];
