@@ -50,6 +50,9 @@ public class Main {
         resultsForSortArrayA = a;
         resultsForSortArrayA = QuickSort.quickSortRandomKey(a);
         System.out.println("Sort with Random key: " + Arrays.toString(resultsForSortArrayA));
+        resultsForSortArrayA = a;
+        resultsForSortArrayA = QuickSort.quickSortMedianOfThreeKey(a);
+        System.out.println("Sort with Random key: " + Arrays.toString(resultsForSortArrayA));
 
 
     }

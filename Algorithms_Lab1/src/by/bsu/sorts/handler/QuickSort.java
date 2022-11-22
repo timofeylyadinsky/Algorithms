@@ -106,9 +106,36 @@ public class QuickSort {
 
 
 
+//Median of three
+public static int[] quickSortMedianOfThreeKey(int[] arr){
+    if (arr.length <= 1) {
+        return arr;
+    }
+    int partition = findMedianOfThree(arr[0],arr[(arr.length-1)/2],arr[arr.length-1]);
+    int[] lessArray = Arrays.stream(arr)
+            .filter(i -> i < partition)
+            .toArray();
+    int[] equalArray = Arrays.stream(arr)
+            .filter(i -> i == partition)
+            .toArray();
+    int[] greaterArray = Arrays.stream(arr)
+            .filter(i -> i > partition)
+            .toArray();
+    int[][] arrayForConcat = new int[][]{quickSortMedianOfThreeKey(lessArray),equalArray,quickSortMedianOfThreeKey(greaterArray)};
+    return Arrays.stream(arrayForConcat)
+            .flatMapToInt(i->Arrays.stream(i))
+            .toArray();
+}
 
-
-
+public static int findMedianOfThree(int a, int b, int c){
+       if(a > b && a < c) return a;
+       if(a < b && a > c) return a;
+       if(c > b && a > c) return c;
+       if(c > a && b > c) return c;
+       if(c < b && a > b) return b;
+       if(b > a && c > b) return b;
+       return a;
+}
 
 
 
