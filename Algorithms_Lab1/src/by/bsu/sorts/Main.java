@@ -60,6 +60,7 @@ public class Main {
         resultsForSortArrayA = QuickSort.quickSortLomuto(a,0,a.length-1);
         System.out.println("Sort with Lomuto Partition: " + Arrays.toString(resultsForSortArrayA));
 
+        TestMenu.testTimeOfQuickSortVariations();
     }
 }
 

@@ -91,6 +91,42 @@ public class TestMenu {
 
 
 
+    public static void testTimeOfQuickSortVariations(){
+
+        int size = 10000;
+        int seed = 10000;
+        int[] a = new int[size];
+        int[] resultsForSortArrayA = a;
+        a = QuickSort.createRandomArray(a, size, seed);
+        System.out.println(Arrays.toString(a));
+        int[] finalA = a;
+
+        long timeOfTask = measureTime(()->QuickSort.quickSortSecondKey(finalA));
+        System.out.println("Sort with second key: " + Arrays.toString(QuickSort.quickSortSecondKey(finalA)));
+        System.out.println("Time: " + timeOfTask);
+
+        timeOfTask = measureTime(()->QuickSort.quickSortMiddleKey(finalA));
+        System.out.println("Sort with Middle key: " + Arrays.toString(QuickSort.quickSortMiddleKey(finalA)));
+        System.out.println("Time: " + timeOfTask);
+
+        timeOfTask = measureTime(()->QuickSort.quickSortRandomKey(finalA));  ;
+        System.out.println("Sort with Random key: " + Arrays.toString(QuickSort.quickSortRandomKey(a)));
+        System.out.println("Time: " + timeOfTask);
+
+        timeOfTask = measureTime(()->QuickSort.quickSortMedianOfThreeKey(finalA));
+        System.out.println("Sort with median three key: " + Arrays.toString(QuickSort.quickSortMedianOfThreeKey(a)));
+        System.out.println("Time: " + timeOfTask);
+
+        timeOfTask = measureTime(()-> QuickSort.quickSortHoar(finalA,0,finalA.length-1));;
+        System.out.println("Sort with Hoar Partition: " + Arrays.toString( QuickSort.quickSortHoar(a,0,a.length-1)));
+        System.out.println("Time: " + timeOfTask);
+
+        timeOfTask = measureTime(()-> QuickSort.quickSortLomuto(finalA,0,finalA.length-1));
+        System.out.println("Sort with Lomuto Partition: " + Arrays.toString(QuickSort.quickSortLomuto(a,0,a.length-1)));
+        System.out.println("Time: " + timeOfTask);
+
+    }
+
 
     private static long measureTime(Runnable task) {
         long startTime = System.currentTimeMillis();
