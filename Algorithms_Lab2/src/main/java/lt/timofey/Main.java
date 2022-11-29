@@ -18,8 +18,10 @@ import lt.timofey.task1.BinarySearch;
 import lt.timofey.task1.InterpolationSearch;
 import lt.timofey.reader.InfoReader;
 import lt.timofey.task2.BinaryTree;
+import lt.timofey.task3.HashTableChain;
 
 import java.util.Arrays;
+import java.util.Hashtable;
 
 public class Main {
     public static void main(String[] args) {
@@ -52,5 +54,46 @@ public class Main {
         System.out.println();
         tree.balanceTree();
         tree.print();
+
+
+
+        final HashTableChain table = new HashTableChain();
+        table.add(10, 666);
+        table.add(20, -12345);
+        table.add(3, 245);
+        table.add(4, -123);
+        table.add(5, 888);
+        table.add(6, 777);
+        table.add(7, 333);
+        table.add(19, 8);
+        table.add(16, 77);
+        table.add(71, 633);
+        System.out.println("Knut\n-------------");
+        System.out.println(table.print());
+        table.printMaxOfCollision();
+        table.printNumOfCollision();
+        System.out.println("\n-------------\n");
+
+
+        for(int i = 1; i < 100; i++) {
+            final HashTableChain table2 = new HashTableChain();
+            table2.c = table2.c+(double)(i)/1000;
+            table2.add(10, 666);
+            table2.add(20, -12345);
+            table2.add(3, 245);
+            table2.add(4, -123);
+            table2.add(5, 888);
+            table2.add(6, 777);
+            table2.add(7, 333);
+            table2.add(19, 8);
+            table2.add(16, 77);
+            table2.add(71, 633);
+            System.out.println("\n-------------");
+            System.out.println(table2.print());
+            table2.printMaxOfCollision();
+            table2.printNumOfCollision();
+            System.out.println("Constant = "+ table2.c +"\n-------------\n");
+        }
     }
 }
+
