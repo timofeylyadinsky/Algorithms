@@ -2,16 +2,17 @@ package lt.timofey.handler;
 
 import java.util.Arrays;
 
-public class BinarySearch {
-    public static int binarySearchInArray(int[] array, int key){
+public class InterpolationSearch {
+
+    public static int interpolationSearchInArray(int[] array, int key){
         Arrays.sort(array);
         int leftIndex = 0;
         int rightIndex = array.length-1;
         int compareOperations = 0;
         int position = -1;
 
-        while (leftIndex<=rightIndex){
-            int middleIndex = leftIndex + (rightIndex - leftIndex) / 2;
+        while (array[leftIndex]<=key && array[rightIndex]>=key){
+            int middleIndex = leftIndex + ((key-array[leftIndex])*(rightIndex-leftIndex)) / (array[rightIndex]-array[leftIndex]);
             if(array[middleIndex] == key){
                 compareOperations++;
                 position = middleIndex;

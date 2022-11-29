@@ -15,6 +15,7 @@ package lt.timofey;
 //        Реализовать хэширование умножением с разрешением коллизий цепочками переполнения, линейным зондированием и двойным хэшированием. Провести вычислительный эксперимент: подобрать константу для метода умножения, сравнить ее с константой Кнута по наибольшей длине цепочек коллизий (например, проитерировать константу Кнута, уменьшая или увеличивая с очень малым шагом)
 
 import lt.timofey.handler.BinarySearch;
+import lt.timofey.handler.InterpolationSearch;
 import lt.timofey.reader.InfoReader;
 
 import java.util.Arrays;
@@ -31,5 +32,6 @@ public class Main {
         System.out.println(Arrays.toString(array));
 
         System.out.println(BinarySearch.binarySearchInArray(array, 10));
+        System.out.println(InterpolationSearch.interpolationSearchInArray(array, 10));
     }
 }
