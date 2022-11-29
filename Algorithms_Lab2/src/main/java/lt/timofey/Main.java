@@ -44,5 +44,13 @@ public class Main {
         BinaryTree tree = new BinaryTree().insertArrayOfValuesInBinaryTree(secondArray);
         // отображение дерева:
         tree.print();
+        System.out.println("Traversal in order: " + tree.traversalInOrder().toString());
+        System.out.println("Traversal pre order: " + tree.traversalPreOrder().toString());
+        System.out.println("Traversal post order: " + tree.traversalPostOrder().toString());
+        System.out.println("Second Min key = " + tree.findKeyMin(2));
+        System.out.println("Value to search: " + tree.findNodeByValue(tree.findKeyMin(4)));
+        System.out.println();
+        tree.balanceTree();
+        tree.print();
     }
 }
