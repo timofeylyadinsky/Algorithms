@@ -14,6 +14,7 @@ package lt.timofey;
 //
 //        Реализовать хэширование умножением с разрешением коллизий цепочками переполнения, линейным зондированием и двойным хэшированием. Провести вычислительный эксперимент: подобрать константу для метода умножения, сравнить ее с константой Кнута по наибольшей длине цепочек коллизий (например, проитерировать константу Кнута, уменьшая или увеличивая с очень малым шагом)
 
+import lt.timofey.additional.BinaryTreeTest;
 import lt.timofey.task1.BinarySearch;
 import lt.timofey.task1.InterpolationSearch;
 import lt.timofey.reader.InfoReader;
@@ -55,6 +56,7 @@ public class Main {
         tree.balanceTree();
         tree.print();
 
+        BinaryTreeTest.taskBinaryTreeAdditional();
 
 
         final HashTableChain table = new HashTableChain();
@@ -75,7 +77,7 @@ public class Main {
         System.out.println("\n-------------\n");
 
 
-        for(int i = 1; i < 100; i++) {
+        for(int i = 0; i < 100; i++) {
             final HashTableChain table2 = new HashTableChain();
             table2.c = table2.c+(double)(i)/1000;
             table2.add(10, 666);

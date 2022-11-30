@@ -92,16 +92,24 @@ public class BinaryTree {
 
     public Node findNodeByValue(int value){
         Node currentNode = rootNode;
+        boolean isLeft = false, isRoot = true;
         while (currentNode.getValue() != value) {
             if (value < currentNode.getValue()) {
                 currentNode = currentNode.getLeftChild();
+                isRoot = false;
+                isLeft = true;
             } else { //движение вправо
                 currentNode = currentNode.getRightChild();
+                isRoot = false;
+                isLeft = false;
             }
             if (currentNode == null) {
                 return null;
             }
         }
+        if(isRoot) System.out.println("It Root Node");
+        if(isLeft) System.out.println("It Left Node");
+        else System.out.println("It Right Node");
         return currentNode;
     }
 
@@ -123,6 +131,87 @@ public class BinaryTree {
         this.balanceTreeRec(list.subList(middleKey + 1,list.size()));
     }
 
+    public boolean deleteNode(int value)
+    {
+        Node currentNode = rootNode;
+        Node parentNode = rootNode;
+        boolean isLeftChild = true;
+        while (currentNode.getValue() != value) {
+            parentNode = currentNode;
+            if (value < currentNode.getValue()) {
+                isLeftChild = true;
+                currentNode = currentNode.getLeftChild();
+            }
+            else {
+                isLeftChild = false;
+                currentNode = currentNode.getRightChild();
+            }
+            if (currentNode == null)
+                return false;
+        }
+
+        if (currentNode.getLeftChild() == null && currentNode.getRightChild() == null) {
+            if (currentNode == rootNode)
+                rootNode = null;
+            else if (isLeftChild)
+                parentNode.setLeftChild(null);
+            else
+                parentNode.setRightChild(null);
+        }
+        else if (currentNode.getRightChild() == null) {
+            if (currentNode == rootNode)
+                rootNode = currentNode.getLeftChild();
+            else if (isLeftChild)
+                parentNode.setLeftChild(currentNode.getLeftChild());
+            else
+                parentNode.setRightChild(currentNode.getLeftChild());
+        }
+        else if (currentNode.getLeftChild() == null) {
+            if (currentNode == rootNode)
+                rootNode = currentNode.getRightChild();
+            else if (isLeftChild)
+                parentNode.setLeftChild(currentNode.getRightChild());
+            else
+                parentNode.setRightChild(currentNode.getRightChild());
+        }
+        else {
+            Node heir = receiveHeir(currentNode);
+            if (currentNode == rootNode)
+                rootNode = heir;
+            else if (isLeftChild)
+                parentNode.setLeftChild(heir);
+            else
+                parentNode.setRightChild(heir);
+        }
+        return true;
+    }
+    private Node receiveHeir(Node node) {
+        Node parentNode = node;
+        Node heirNode = node;
+        Node currentNode = node.getRightChild();
+        while (currentNode != null)
+        {
+            parentNode = heirNode;
+            heirNode = currentNode;
+            currentNode = currentNode.getLeftChild();
+        }
+        if (heirNode != node.getRightChild())
+        {
+            parentNode.setLeftChild(heirNode.getRightChild());
+            heirNode.setRightChild(node.getRightChild());
+        }
+        return heirNode;
+    }
+
+
+    public boolean isBST(){
+        return isBSTRec(rootNode, Integer.MIN_VALUE, Integer.MAX_VALUE);
+    }
+    public boolean isBSTRec(Node node, int min, int max){
+        if(node == null) return true;
+        if(node.getValue()<min || node.getValue() > max) return false;
+        return isBSTRec(node.getLeftChild(), min, node.getValue()-1) && isBSTRec(node.getRightChild(), node.getValue()-1, max);
+    }
     public BinaryTree insertArrayOfValuesInBinaryTree(int[] array){
         BinaryTree binaryTree = new BinaryTree();
         for(int i : array){
