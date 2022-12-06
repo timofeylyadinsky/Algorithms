@@ -1,6 +1,7 @@
 package lt.timofey.handler;
 
 import lt.timofey.task1.Graph;
+import lt.timofey.task2.Floyd;
 
 import java.util.ArrayList;
 
@@ -62,5 +63,10 @@ public class Menu {
 
         graph3.printGraph();
         System.out.println(graph3.isBiPartited() + " "+ graph3.findPartition()[0].toString()+ " "+ graph3.findPartition()[1].toString());
+    }
+    public static void startMenuForTask2(){
+        Floyd fl = new Floyd(Floyd.initRandomAdjacencyMatrix(5));
+        fl.findShortestPath();
+        System.out.println(fl.findVertexWithShortestPath());
     }
 }

@@ -3,13 +3,17 @@ package lt.timofey;
 
 import lt.timofey.handler.Menu;
 import lt.timofey.task1.Graph;
+import lt.timofey.task2.Floyd;
 
 import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
        // System.out.println("Hello world!");
-        Menu.startMenuForTask1();
+        //Menu.startMenuForTask1();
+        //Menu.startMenuForTask2();
+
+
     }
 }
 
