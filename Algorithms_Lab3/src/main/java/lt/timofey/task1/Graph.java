@@ -1,5 +1,6 @@
 package lt.timofey.task1;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -25,20 +26,33 @@ public class Graph {
         adjacencyLists[src].remove((Integer) dest);
         adjacencyLists[dest].remove((Integer) src);
     }
-    public void doDFS(int vertex){
-        boolean[] visited = new boolean[numVertices];
-        DFS(vertex, visited);
+    public ArrayList<Integer> doDFS(int vertex, boolean[] visited){
+        //boolean[] visited = new boolean[numVertices];
+        ArrayList<Integer> component = new ArrayList<>();
+        DFS(vertex, visited, component);
+        return component;
     }
-    private void DFS(int vertex, boolean[] visited) {
+    private ArrayList<Integer> DFS(int vertex, boolean[] visited, ArrayList<Integer> component) {
         visited[vertex] = true;
-        System.out.print(vertex + " ");
-
+        //System.out.print(vertex + " ");
+        component.add(vertex);
         Iterator<Integer> ite = adjacencyLists[vertex].listIterator();
         while (ite.hasNext()) {
             int adj = ite.next();
             if (!visited[adj])
-                DFS(adj, visited);
+                DFS(adj, visited, component);
         }
+        return component;
+    }
+    public  ArrayList<ArrayList<Integer>> getConnectedCompenents(){
+        ArrayList<ArrayList<Integer>> components = new ArrayList<ArrayList<Integer>>();
+        boolean[] visited = new boolean[numVertices];
+        for (int i = 0; i< numVertices; i++){
+            if(!visited[i]){
+                components.add(doDFS(i, visited));
+            }
+        }
+        return components;
     }
     public void printGraph(){
         System.out.println("\n--------");

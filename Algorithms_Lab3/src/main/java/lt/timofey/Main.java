@@ -3,6 +3,8 @@ package lt.timofey;
 
 import lt.timofey.task1.Graph;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
        // System.out.println("Hello world!");
@@ -26,7 +28,12 @@ public class Main {
 
         System.out.println("Following is Depth First Traversal");
 
-        g.doDFS(4);
+        //g.doDFS(4);
+
+        ArrayList<ArrayList<Integer>> a = g.getConnectedCompenents();
+        for(ArrayList<Integer> i : a) {
+            System.out.println(i.toString());
+        }
     }
 }
 
