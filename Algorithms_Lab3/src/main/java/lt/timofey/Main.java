@@ -34,6 +34,24 @@ public class Main {
         for(ArrayList<Integer> i : a) {
             System.out.println(i.toString());
         }
+        g.isEulerGraph();
+        g.findEulerCycle();
+
+
+        Graph graph2 = new Graph(5);
+        graph2.addEdge(1-1, 2-1);
+        graph2.addEdge(2-1, 3-1);
+        graph2.addEdge(3-1, 4-1);
+        graph2.addEdge(4-1, 5-1);
+        graph2.addEdge(5-1, 1-1);
+        graph2.addEdge(1-1, 3-1);
+        graph2.addEdge(3-1, 5-1);
+        graph2.addEdge(5-1, 2-1);
+        graph2.addEdge(2-1, 4-1);
+        graph2.addEdge(4-1, 1-1);
+        graph2.printGraph();
+        System.out.println(graph2.findEulerCycle().toString());
+        graph2.printGraph();
     }
 }
 
