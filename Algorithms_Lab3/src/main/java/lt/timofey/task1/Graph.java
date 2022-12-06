@@ -129,6 +129,43 @@ public class Graph {
         System.out.println("None euler cycle in graph");
         return new ArrayList<Integer>(0);
     }
+    public boolean isBiPartited(){
+        int[] visited = new int[numVertices];
+        return isBiPartitedRec(0, visited, 1);
+        //return true;
+    }
+    public boolean isBiPartitedRec(int vertex, int[] visited, int currentNum){
+        visited[vertex] = currentNum;
+        //System.out.print(vertex + " ");
+        Iterator<Integer> ite = adjacencyLists[vertex].listIterator();
+        while (ite.hasNext()) {
+            int adj = ite.next();
+            if (visited[adj] == 0)
+                isBiPartitedRec(adj, visited, (currentNum==1) ? 2 : 1);
+            else if(visited[adj] == currentNum)
+                return false;
+        }
+        return true;
+    }
+    public ArrayList<Integer>[] findPartition(){
+        if (this.isBiPartited()){
+            int[] visited = new int[numVertices];
+            isBiPartitedRec(0, visited, 1);
+            ArrayList<Integer> fractional[] = new ArrayList[2];
+            fractional[0] = new ArrayList<>();
+            fractional[1] = new ArrayList<>();
+            for (int i = 0; i<visited.length; i++){
+                if(visited[i]==1){
+                    fractional[0].add(i);
+                }else{
+                    fractional[1].add(i);
+                }
+            }
+            return fractional;
+        }else{
+            return new ArrayList[2];
+        }
+    }
     public void printGraph(){
         System.out.println("\n--------");
         for(int i = 0; i < numVertices; i++){
