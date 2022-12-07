@@ -2,6 +2,8 @@ package lt.timofey.handler;
 
 import lt.timofey.task1.Graph;
 import lt.timofey.task2.Floyd;
+import lt.timofey.task3.Edge;
+import lt.timofey.task3.UndirectedWeightGraph;
 
 import java.util.ArrayList;
 
@@ -68,5 +70,21 @@ public class Menu {
         Floyd fl = new Floyd(Floyd.initRandomAdjacencyMatrix(5));
         fl.findShortestPath();
         System.out.println(fl.findVertexWithShortestPath());
+    }
+    public static void startMenuForTask3(){
+
+        UndirectedWeightGraph uwg = new UndirectedWeightGraph(5);
+
+        uwg.addEdge(new Edge(0,2,3));
+        uwg.addEdge(new Edge(0,3,5));
+        uwg.addEdge(new Edge(0,1,7));
+        uwg.addEdge(new Edge(1,3,4));
+        uwg.addEdge(new Edge(1,4,8));
+        uwg.addEdge(new Edge(3,4,6));
+        //uwg.printGraph();
+        //uwg.removeEdge(new Edge(1,3,4));
+        uwg.printGraph();
+        uwg.kruskalMST();
+        uwg.printGraph();
     }
 }

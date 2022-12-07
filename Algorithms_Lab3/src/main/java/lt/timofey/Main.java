@@ -4,6 +4,8 @@ package lt.timofey;
 import lt.timofey.handler.Menu;
 import lt.timofey.task1.Graph;
 import lt.timofey.task2.Floyd;
+import lt.timofey.task3.Edge;
+import lt.timofey.task3.UndirectedWeightGraph;
 
 import java.util.ArrayList;
 
@@ -12,8 +14,7 @@ public class Main {
        // System.out.println("Hello world!");
         //Menu.startMenuForTask1();
         //Menu.startMenuForTask2();
-
-
+        Menu.startMenuForTask3();
     }
 }
 
