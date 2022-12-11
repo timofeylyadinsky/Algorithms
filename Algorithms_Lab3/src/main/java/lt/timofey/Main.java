@@ -17,10 +17,7 @@ public class Main {
         //Menu.startMenuForTask1();
         //Menu.startMenuForTask2();
         //Menu.startMenuForTask3();
-        int[][] arr = {{1,1,1,0},{0,1,0,0},{1,0,1,0},{0,1,1,0}};
-        //int[][] arr = {{1,1,1,3},{3,1,4,5},{2,3,4,5},{0,1,1,4}};
-        HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm(arr);
-        hungarianAlgorithm.findOptimalAssigment();
+       Menu.startMenuForTask4();
         //int[][] arr = new int[][]{{1,2,3,4},{5,4,3,2}};
 //        System.out.println(Arrays.toString(arr[0]));
     }

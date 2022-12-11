@@ -4,8 +4,10 @@ import lt.timofey.task1.Graph;
 import lt.timofey.task2.Floyd;
 import lt.timofey.task3.Edge;
 import lt.timofey.task3.UndirectedWeightGraph;
+import lt.timofey.task4.HungarianAlgorithm;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Menu {
     public static void startMenuForTask1(){
@@ -86,5 +88,13 @@ public class Menu {
         uwg.printGraph();
         uwg.kruskalMST();
         uwg.printGraph();
+    }
+    public static void startMenuForTask4(){
+        //int[][] arr = {{1,1,1,0},{0,1,0,0},{1,0,1,0},{0,1,1,0}};
+//        int[][] arr = {{1,1,1,3},{3,1,4,5},{2,3,4,5},{0,1,1,4}};
+        int[][] arr = {{7,3,6,9,5},{7,5,7,5,6},{7,6,8,8,9},{3,1,6,5,7},{2,4,9,9,5}};
+        HungarianAlgorithm hungarianAlgorithm = new HungarianAlgorithm(arr);
+        Arrays.stream(arr).forEach(i -> System.out.println(Arrays.toString(i)));
+        hungarianAlgorithm.print(hungarianAlgorithm.findOptimalAssigment());
     }
 }
