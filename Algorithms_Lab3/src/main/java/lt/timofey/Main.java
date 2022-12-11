@@ -7,6 +7,7 @@ import lt.timofey.task2.Floyd;
 import lt.timofey.task3.Edge;
 import lt.timofey.task3.UndirectedWeightGraph;
 import lt.timofey.task4.HungarianAlgorithm;
+import lt.timofey.task5.GaleShapleyAlgorithm;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,7 +18,14 @@ public class Main {
         //Menu.startMenuForTask1();
         //Menu.startMenuForTask2();
         //Menu.startMenuForTask3();
-       Menu.startMenuForTask4();
+       //Menu.startMenuForTask4();
+
+        int[][] arr = {{1,0,2,3},{2,3,1,0},{2,1,3,0},{0,3,2,1}};
+        int[][] arr2 = {{2,3,1,0},{2,1,0,3},{0,1,2,3},{3,2,1,0}};
+
+
+        new GaleShapleyAlgorithm().moreEffectiveEmployeeForTask(arr,arr2);
+
         //int[][] arr = new int[][]{{1,2,3,4},{5,4,3,2}};
 //        System.out.println(Arrays.toString(arr[0]));
     }
