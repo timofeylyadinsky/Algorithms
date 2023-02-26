@@ -25,6 +25,7 @@ public class Main {
 
 
         new GaleShapleyAlgorithm().moreEffectiveEmployeeForTask(arr,arr2);
+        new GaleShapleyAlgorithm().moreEffectiveEmployeeForTask(arr2,arr);
 
         //int[][] arr = new int[][]{{1,2,3,4},{5,4,3,2}};
 //        System.out.println(Arrays.toString(arr[0]));
