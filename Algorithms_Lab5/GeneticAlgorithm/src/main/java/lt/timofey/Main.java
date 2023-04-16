@@ -9,13 +9,15 @@ public class Main {
         int[][] secondEquationPowers = {{1,1,2,2,2},{2,1,2,2,2},{0,2,1,1,1},{1,2,1,2,0},{0,0,0,0,1}};
         int[][] thirdEquationPowers = {{0,2,1,2,0},{2,0,2,2,0},{1,2,1,1,0},{0,0,2,0,2},{0,0,0,0,1}};
         //int[][] fourthEquationPowers = {{0,0,0,0,1},{1,0,1,1,0},{0,2,1,0,2},{0,1,2,0,2},{2,0,2,1,2}};
-        //new EquationSolver(firstEquationPowers, -50).start();
+        new EquationSolver(firstEquationPowers, -50).start();
         //new EquationSolver(secondEquationPowers, -50).start();
-        new EquationSolver(thirdEquationPowers, -50).start();
+        //new EquationSolver(thirdEquationPowers, -50).start();
     }
 
-
-
+//    Second Array
+//    Best solutionEquation{x1=-2, x2=-2, x3=-1, x4=-2, x5=-2}
+//    Iteration: 2203 solution: 0.0
+//////
 // Second Array
 //    Best solutionEquation{x1=-1, x2=-35, x3=-76, x4=-50, x5=-50}
 //    Iteration: 87813 solution: 0.0
@@ -79,7 +81,7 @@ class EquationSolver {
     private final int minValue = -100;
     private final int maxValue = 100;
     private final int populationCount = 10;
-    private final double mutationChanceForGoodOffspring = 0.3;
+    private final double mutationChanceForGoodOffspring = 0.5;
     private final double mutationChanceForBadOffspring = 0.75;
     private int[][] powers;
     private int result;
