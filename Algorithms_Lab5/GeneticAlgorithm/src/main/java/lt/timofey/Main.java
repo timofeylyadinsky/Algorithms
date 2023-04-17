@@ -8,10 +8,9 @@ public class Main {
         int[][] firstEquationPowers = {{1,0,2,2,2},{0,0,0,1,0},{0,0,1,0,2},{0,0,1,2,2},{1,2,2,1,2}};
         int[][] secondEquationPowers = {{1,1,2,2,2},{2,1,2,2,2},{0,2,1,1,1},{1,2,1,2,0},{0,0,0,0,1}};
         int[][] thirdEquationPowers = {{0,2,1,2,0},{2,0,2,2,0},{1,2,1,1,0},{0,0,2,0,2},{0,0,0,0,1}};
-        //int[][] fourthEquationPowers = {{0,0,0,0,1},{1,0,1,1,0},{0,2,1,0,2},{0,1,2,0,2},{2,0,2,1,2}};
-        new EquationSolver(firstEquationPowers, -50).start();
+        //new EquationSolver(firstEquationPowers, -50).start();
         //new EquationSolver(secondEquationPowers, -50).start();
-        //new EquationSolver(thirdEquationPowers, -50).start();
+        new EquationSolver(thirdEquationPowers, -50).start();
     }
 
 //    Second Array
