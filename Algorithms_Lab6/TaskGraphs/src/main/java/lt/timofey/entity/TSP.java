@@ -26,7 +26,6 @@ public class TSP {
 
         Collections.shuffle(cityList);
 
-
         System.out.println("travelling without optimization: " + cityList.toString());
         System.out.println("travel distance without optimization: " +  TSP.calculateTravelDistance(cityList));
 
