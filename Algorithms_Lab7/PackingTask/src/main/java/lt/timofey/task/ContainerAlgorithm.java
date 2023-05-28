@@ -15,7 +15,10 @@ public class ContainerAlgorithm {
 //        r.add(new Rectangle(1,10));
 //        r.add(new Rectangle(3,15));
 //        r.add(new Rectangle(2,1));
-//        new ContainerAlgorithm().FirstFitDecreasingHigh(r,20);
+        //Rectangle r = new Rectangle();
+        //List<Rectangle> list = r.generateRandomRectangle(10,20);
+        //new ContainerAlgorithm().BestFitDecreasingHigh(list,20);
+        //new ContainerAlgorithm().FirstFitDecreasingHigh(list,20);
 
         new ContainerAlgorithm().print();
     }
@@ -50,6 +53,43 @@ public class ContainerAlgorithm {
                     }
                 }
             }
+        }
+        System.out.println(Arrays.toString(resultOfRectangle) + " " + resultOfRectangle.length);
+        System.out.println(rectangleList.toString());
+        return new DtoResultOfAlgorithm(rectangleList, resultOfRectangle, containerWidth);
+    }
+
+    public DtoResultOfAlgorithm BestFitDecreasingHigh (List<Rectangle> rectangleList, int containerWidth) {
+        int level = 0;
+        int levelNum = 1;
+        int[] widthOfLevels = new int[1];
+        Arrays.fill(widthOfLevels, containerWidth);
+        List<Integer>[] resultOfRectangle = new ArrayList[1];
+        resultOfRectangle[0] = new ArrayList<>();
+        //System.out.println(rectangleList);
+        rectangleList.sort(Comparator.comparingInt(Rectangle::getHeight).reversed());
+        //System.out.println(rectangleList);
+        resultOfRectangle[level].add(0);
+        widthOfLevels[0] -= rectangleList.get(0).getWidth();
+        for(int i = 1; i < rectangleList.size(); i++) {
+            int bestLevel = widthOfLevels.length;
+            int bestWidth = containerWidth + 1;
+            for(level = 0; level < widthOfLevels.length; level++){
+                if(widthOfLevels[level]>=rectangleList.get(i).getWidth()){
+                    if ((widthOfLevels[level]-rectangleList.get(i).getWidth() < bestWidth) && (widthOfLevels[level]-rectangleList.get(i).getWidth() >= 0)) {
+                        bestLevel = level;
+                        bestWidth = widthOfLevels[level]-rectangleList.get(i).getWidth();
+                    }
+                }else if(level+1 >= widthOfLevels.length){
+                     widthOfLevels = Arrays.copyOf(widthOfLevels, widthOfLevels.length+1);
+                    widthOfLevels[widthOfLevels.length-1] = containerWidth;
+                    //bestLevel = level+1;
+                }
+            }
+            if(bestLevel >= resultOfRectangle.length) resultOfRectangle = Arrays.copyOf(resultOfRectangle, bestLevel+1);
+            if(resultOfRectangle[bestLevel]==null) resultOfRectangle[bestLevel] = new ArrayList<>();
+            resultOfRectangle[bestLevel].add(i);
+            widthOfLevels[bestLevel]-=rectangleList.get(i).getWidth();
         }
         System.out.println(Arrays.toString(resultOfRectangle) + " " + resultOfRectangle.length);
         System.out.println(rectangleList.toString());
@@ -100,12 +140,25 @@ class Rectangle{
                 '}';
     }
 
+    public List<Rectangle> generateRandomRectangle(int size, int widthContainer) {
+        List<Rectangle> rect = new ArrayList<>();
+        Random rand = new Random(System.currentTimeMillis());
+        for(int i = 0; i < size; i++){
+            rect.add(new Rectangle(rand.nextInt(rand.nextInt(widthContainer)+1)+1,rand.nextInt(rand.nextInt(widthContainer)+1)+1));
+        }
+        return rect;
+    }
+
 }
 
 
 class DrawingCanvas extends JComponent {
     private int width;
     private int height;
+
+    private int SIZE_OF_ARRAY = 10;
+
+    private int WIDTH_OF_CONTAINER = 20;
 
     public DrawingCanvas(int width, int height) {
         this.width = width;
@@ -114,17 +167,19 @@ class DrawingCanvas extends JComponent {
 
     protected void paintComponent(Graphics g){
         Graphics2D g2d = (Graphics2D)g;
-        List<Rectangle> r = new ArrayList<>();
-        r.add(new Rectangle(1,10));
-        r.add(new Rectangle(3,15));
-        r.add(new Rectangle(2,1));
-        DtoResultOfAlgorithm dto = new ContainerAlgorithm().FirstFitDecreasingHigh(r,20);
+//        List<Rectangle> r = new ArrayList<>();
+//        r.add(new Rectangle(1,10));
+//        r.add(new Rectangle(3,15));
+//        r.add(new Rectangle(2,1));
+        Rectangle r = new Rectangle();
+        List<Rectangle> list = r.generateRandomRectangle(SIZE_OF_ARRAY,WIDTH_OF_CONTAINER);
+        DtoResultOfAlgorithm dto = new ContainerAlgorithm().FirstFitDecreasingHigh(list,WIDTH_OF_CONTAINER);
         List<Rectangle> rectangleList = dto.getRectangleList();
         int width = dto.widthContainer;
 
         List<Integer>[] layers = dto.getLayers();
         int scale = 10;
-        System.out.println(width*scale);
+        //System.out.println(width*scale);
         Rectangle2D rect = new Rectangle2D.Double(0,0,width*scale, getHeight());
         g2d.setColor(Color.BLACK);
         g2d.fill(rect);
@@ -132,7 +187,7 @@ class DrawingCanvas extends JComponent {
         int currentStartHeight = 0;
         for(int i=0;i<layers.length;i++){
             for(int j = 0; j < layers[i].size(); j++) {
-                Rectangle2D rect2 = new Rectangle2D.Double(currentStartWidth, currentStartHeight, rectangleList.get(j).getWidth()*scale, rectangleList.get(j).getHeight()*scale);
+                Rectangle2D rect2 = new Rectangle2D.Double(currentStartWidth, currentStartHeight, rectangleList.get(layers[i].get(j)).getWidth()*scale, rectangleList.get(layers[i].get(j)).getHeight()*scale);
 
                 Random rand = new Random(System.currentTimeMillis());
                 int v = rand.nextInt(30);
@@ -144,11 +199,44 @@ class DrawingCanvas extends JComponent {
                 else g2d.setColor(Color.MAGENTA);
                 g2d.fill(rect2);
                 g2d.setColor(Color.GREEN);
-                System.out.println(currentStartWidth + "  " + currentStartHeight + " "+  (currentStartWidth + rectangleList.get(j).getWidth()*scale) + " "+ (currentStartHeight +  rectangleList.get(j).getHeight()*scale));
-                g2d.drawRect(currentStartWidth, currentStartHeight, rectangleList.get(j).getWidth()*scale,   rectangleList.get(j).getHeight()*scale);
-                currentStartWidth+=(rectangleList.get(j).getWidth()*scale);
+                //System.out.println(currentStartWidth + "  " + currentStartHeight + " "+  (currentStartWidth + rectangleList.get(layers[i].get(j)).getWidth()*scale) + " "+ (currentStartHeight +  rectangleList.get(layers[i].get(j)).getHeight()*scale));
+                g2d.drawRect(currentStartWidth, currentStartHeight, rectangleList.get(layers[i].get(j)).getWidth()*scale,   rectangleList.get(layers[i].get(j)).getHeight()*scale);
+                currentStartWidth+=(rectangleList.get(layers[i].get(j)).getWidth()*scale);
             }
             currentStartWidth = 0;
+            currentStartHeight += rectangleList.get(layers[i].get(0)).getHeight()*scale;
+        }
+
+
+
+        /*BF*/
+        dto = new ContainerAlgorithm().BestFitDecreasingHigh(list,WIDTH_OF_CONTAINER);
+        layers = dto.getLayers();
+        rectangleList = dto.getRectangleList();
+        rect = new Rectangle2D.Double(width*scale*2,0,width*scale, getHeight());
+        g2d.setColor(Color.BLACK);
+        g2d.fill(rect);
+        currentStartWidth = width*scale*2;
+        currentStartHeight = 0;
+        for(int i=0;i<layers.length;i++){
+            for(int j = 0; j < layers[i].size(); j++) {
+                Rectangle2D rect2 = new Rectangle2D.Double(currentStartWidth, currentStartHeight, rectangleList.get(layers[i].get(j)).getWidth()*scale, rectangleList.get(layers[i].get(j)).getHeight()*scale);
+
+                Random rand = new Random(System.currentTimeMillis());
+                int v = rand.nextInt(30);
+                if(v > 25)  g2d.setColor(Color.RED);
+                else if(v > 20) g2d.setColor(Color.DARK_GRAY);
+                else if(v > 15) g2d.setColor(Color.GREEN);
+                else if(v > 10) g2d.setColor(Color.CYAN);
+                else if(v > 5) g2d.setColor(Color.ORANGE);
+                else g2d.setColor(Color.MAGENTA);
+                g2d.fill(rect2);
+                g2d.setColor(Color.BLUE);
+                //System.out.println(currentStartWidth + "  " + currentStartHeight + " "+  (currentStartWidth + rectangleList.get(layers[i].get(j)).getWidth()*scale) + " "+ (currentStartHeight +  rectangleList.get(layers[i].get(j)).getHeight()*scale));
+                g2d.drawRect(currentStartWidth, currentStartHeight, rectangleList.get(layers[i].get(j)).getWidth()*scale,   rectangleList.get(layers[i].get(j)).getHeight()*scale);
+                currentStartWidth+=(rectangleList.get(layers[i].get(j)).getWidth()*scale);
+            }
+            currentStartWidth = width*scale*2;
             currentStartHeight += rectangleList.get(layers[i].get(0)).getHeight()*scale;
         }
 
