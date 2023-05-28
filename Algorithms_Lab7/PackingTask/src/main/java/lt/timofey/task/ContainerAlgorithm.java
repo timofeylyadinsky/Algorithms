@@ -6,20 +6,14 @@ import java.awt.geom.Rectangle2D;
 import java.util.*;
 import java.util.List;
 
+
+//[[0, 2, 3, 5], [1, 6, 7, 9], [4], [8]] 4
+//        [Rectangle{width=16 ,height=12}, Rectangle{width=6 ,height=10}, Rectangle{width=1 ,height=9}, Rectangle{width=1 ,height=8}, Rectangle{width=18 ,height=4}, Rectangle{width=2 ,height=4}, Rectangle{width=2 ,height=3}, Rectangle{width=5 ,height=2}, Rectangle{width=19 ,height=1}, Rectangle{width=3 ,height=1}]
+//        [[0, 2, 3, 5], [1, 7, 9], [4, 6], [8]] 4
+//        [Rectangle{width=16 ,height=12}, Rectangle{width=6 ,height=10}, Rectangle{width=1 ,height=9}, Rectangle{width=1 ,height=8}, Rectangle{width=18 ,height=4}, Rectangle{width=2 ,height=4}, Rectangle{width=2 ,height=3}, Rectangle{width=5 ,height=2}, Rectangle{width=19 ,height=1}, Rectangle{width=3 ,height=1}]
+
 public class ContainerAlgorithm {
     public static void main(String[] args) {
-//        JFrame j = new JFrame();
-//        j.setSize(640, 640);
-//        j.setVisible(true);
-//        List<Rectangle> r = new ArrayList<>();
-//        r.add(new Rectangle(1,10));
-//        r.add(new Rectangle(3,15));
-//        r.add(new Rectangle(2,1));
-        //Rectangle r = new Rectangle();
-        //List<Rectangle> list = r.generateRandomRectangle(10,20);
-        //new ContainerAlgorithm().BestFitDecreasingHigh(list,20);
-        //new ContainerAlgorithm().FirstFitDecreasingHigh(list,20);
-
         new ContainerAlgorithm().print();
     }
 
