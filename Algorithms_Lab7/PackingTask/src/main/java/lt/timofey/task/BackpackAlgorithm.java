@@ -44,7 +44,6 @@ public class BackpackAlgorithm {
             }
             loop++;
         }
-        //System.out.println(Arrays.deepToString(matrixOfPrice));
         printResult(matrixOfPrice);
     }
 
